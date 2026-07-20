@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Registro Civil de Mascotas</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="encabezado">
+      <div class="encabezado__contenido">
+        <span class="etiqueta">
+          Gobierno de Chile
+        </span>
+
+        <h1>Registro Civil de Mascotas</h1>
+
+        <p>
+          Plataforma para registrar mascotas y
+          relacionarlas con el RUT de sus dueños.
+        </p>
+      </div>
+    </header>
+
+    <main class="contenedor">
+      <section class="tarjeta tarjeta-principal">
+        <div class="titulo-seccion">
+          <div>
+            <p class="subtitulo">Nuevo registro</p>
+            <h2>Registrar mascota</h2>
+          </div>
+
+          <span class="icono">🐾</span>
+        </div>
+
+        <form id="form-registro" class="formulario">
+          <div class="campo">
+            <label for="nombre-registro">
+              Nombre de la mascota
+            </label>
+
+            <input
+              type="text"
+              id="nombre-registro"
+              placeholder="Ejemplo: Luna"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <div class="campo">
+            <label for="rut-registro">
+              RUT del dueño
+            </label>
+
+            <input
+              type="text"
+              id="rut-registro"
+              placeholder="Ejemplo: 12.345.678-9"
+              autocomplete="off"
+              required
+            />
+          </div>
+
+          <button type="submit" class="boton boton-rojo">
+            Registrar mascota
+          </button>
+        </form>
+      </section>
+
+      <section class="cuadricula">
+        <article class="tarjeta">
+          <h2>Buscar por nombre</h2>
+
+          <p class="descripcion">
+            Consulta una mascota específica.
+          </p>
+
+          <form
+            id="form-buscar-nombre"
+            class="formulario formulario-simple"
+          >
+            <div class="campo">
+              <label for="nombre-buscar">
+                Nombre de la mascota
+              </label>
+
+              <input
+                type="text"
+                id="nombre-buscar"
+                placeholder="Nombre"
+                required
+              />
+            </div>
+
+            <button type="submit" class="boton">
+              Buscar
+            </button>
+          </form>
+        </article>
+
+        <article class="tarjeta">
+          <h2>Buscar por RUT</h2>
+
+          <p class="descripcion">
+            Consulta todas las mascotas de un dueño.
+          </p>
+
+          <form
+            id="form-buscar-rut"
+            class="formulario formulario-simple"
+          >
+            <div class="campo">
+              <label for="rut-buscar">
+                RUT del dueño
+              </label>
+
+              <input
+                type="text"
+                id="rut-buscar"
+                placeholder="12.345.678-9"
+                required
+              />
+            </div>
+
+            <button type="submit" class="boton">
+              Buscar
+            </button>
+          </form>
+        </article>
+
+        <article class="tarjeta tarjeta-eliminar">
+          <h2>Eliminar por nombre</h2>
+
+          <p class="descripcion">
+            Elimina una mascota determinada.
+          </p>
+
+          <form
+            id="form-eliminar-nombre"
+            class="formulario formulario-simple"
+          >
+            <div class="campo">
+              <label for="nombre-eliminar">
+                Nombre de la mascota
+              </label>
+
+              <input
+                type="text"
+                id="nombre-eliminar"
+                placeholder="Nombre"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="boton boton-eliminar"
+            >
+              Eliminar mascota
+            </button>
+          </form>
+        </article>
+
+        <article class="tarjeta tarjeta-eliminar">
+          <h2>Eliminar por RUT</h2>
+
+          <p class="descripcion">
+            Elimina todas las mascotas de un dueño.
+          </p>
+
+          <form
+            id="form-eliminar-rut"
+            class="formulario formulario-simple"
+          >
+            <div class="campo">
+              <label for="rut-eliminar">
+                RUT del dueño
+              </label>
+
+              <input
+                type="text"
+                id="rut-eliminar"
+                placeholder="12.345.678-9"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="boton boton-eliminar"
+            >
+              Eliminar por RUT
+            </button>
+          </form>
+        </article>
+      </section>
+
+      <section class="tarjeta">
+        <div class="cabecera-listado">
+          <div>
+            <p class="subtitulo">Base de datos</p>
+            <h2>Mascotas registradas</h2>
+          </div>
+
+          <button
+            type="button"
+            id="btn-listar"
+            class="boton boton-secundario"
+          >
+            Mostrar todas
+          </button>
+        </div>
+
+        <div
+          id="mensaje"
+          class="mensaje oculto"
+          role="alert"
+        ></div>
+
+        <div class="tabla-contenedor">
+          <table id="tabla">
+            <thead>
+              <tr>
+                <th>N.º</th>
+                <th>Nombre de la mascota</th>
+                <th>RUT del dueño</th>
+              </tr>
+            </thead>
+
+            <tbody id="tabla-mascotas"></tbody>
+          </table>
+
+          <p id="estado-vacio" class="estado-vacio">
+            No existen mascotas para mostrar.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Examen final — Desarrollo de Aplicaciones
+        Full Stack JavaScript
+      </p>
+
+      <p>
+        Autor: Kevin Humberto Alejandro Retamal
+        Espinoza
+      </p>
+    </footer>
+
+    <script src="/vendor/axios.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
